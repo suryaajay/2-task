@@ -2,16 +2,13 @@ import java.util.Scanner;
 public class Account {
 
     private double balance;
+
     public Account() {
         this.balance = 0.0;
     }
 
     public Account(double initialBalance) {
-        if (initialBalance > 0) {
-            this.balance = initialBalance;
-        } else {
-            this.balance = 0.0;
-        }
+        this.balance = initialBalance;
     }
 
     public void deposit(double amount) {
@@ -28,7 +25,7 @@ public class Account {
             balance -= amount;
             System.out.println("Withdrew: " + amount);
         } else if (amount > balance) {
-            System.out.println("Insufficient funds.");
+            System.out.println("Insufficient balance.");
         } else {
             System.out.println("Withdrawal amount must be positive.");
         }
@@ -39,34 +36,26 @@ public class Account {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         Account account1 = new Account();
         account1.displayBalance();
-
-        System.out.print("Enter amount to deposit in account1: ");
-        double depositAmount = scanner.nextDouble();
-        account1.deposit(depositAmount);
+        account1.deposit(1000);
+        account1.withdraw(500);
         account1.displayBalance();
 
-        System.out.print("Enter amount to withdraw from account1: ");
-        double withdrawAmount = scanner.nextDouble();
-        account1.withdraw(withdrawAmount);
-        account1.displayBalance();
-
-        System.out.print("Enter initial balance for account2: ");
-        double initialBalance = scanner.nextDouble();
-        Account account2 = new Account(initialBalance);
+        Account account2 = new Account(2000);
         account2.displayBalance();
-
-        System.out.print("Enter amount to deposit in account2: ");
-        depositAmount = scanner.nextDouble();
-        account2.deposit(depositAmount);
+        account2.deposit(500);
+        account2.withdraw(3000);
         account2.displayBalance();
-
-        System.out.print("Enter amount to withdraw from account2: ");
-        withdrawAmount = scanner.nextDouble();
-        account2.withdraw(withdrawAmount);
-        account2.displayBalance();
-        scanner.close();
     }
 }
+
+// Output
+Current Balance: 0.0
+Deposited: 1000.0
+Withdrew: 500.0
+Current Balance: 500.0
+Current Balance: 2000.0
+Deposited: 500.0
+Insufficient balance.
+Current Balance: 2500.0
