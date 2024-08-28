@@ -36,3 +36,9 @@ public class Main {
     }
 }
 
+// Output
+Enter name for person 1: mark
+Name: mark, Age: 18
+Enter name for person 2: stephen
+Enter age for person 2: 50
+Name: stephen, Age: 50
